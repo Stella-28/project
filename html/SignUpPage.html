@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Charmonman:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Libre+Baskerville&display=swap');
+
+body {
+    background-color: #eee;
+    background-image: linear-gradient(to right, #03f58f, #D3D3D3);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+	max-height:98vh;
+	max-width:140vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    background-color: #fff;
+}
+
+.img-fluid {
+    object-fit: cover;
+    height: 100%;
+}
+
+.form-label i {
+    margin-right: 5px;
+}
+
+h1, h3 {
+    font-family: 'Cinzel', serif;
+    text-align: center;
+}
+
+form .btn {
+    margin-top: 20px;
+}
+
+
+
+
+	</style>
+    <script src="https://kit.fontawesome.com/e051bc8902.js" crossorigin="anonymous"></script>
+    <script language="javascript">
+
+	function validation_login()
+	{
+	var Semail			= document.getElementById("input_email").value;
+	var Spass			= document.getElementById("input_pwd").value;
+	var Sval_msg		= document.getElementById("val_msg");
+
+	
+	if(Semail.length >1 )
+	{
+		if(Semail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
+			Sval_msg.innerHTML = "";}
+		else{
+			event.preventDefault();
+			document.getElementById("input_email").focus();
+			Sval_msg.innerHTML = "Invalid Email Address!";
+			return false;
+			}
+	}
+	
+	if(Spass.length > 1){
+		event.preventDefault();
+		if(Spass.match(/^[A-Za-z]\w{7,14}$/)){
+			Sval_msg.innerHTML = ""}
+		
+		else{
+			event.preventDefault();
+			document.getElementById("input_pwd").focus();
+			Sval_msg.innerHTML = "Password must have Characters,Digits & Underscore!";
+			return false;
+		}
+		}
+	if (Spass != ""){
+	document.forms[0].submit();}
+	
+	
+	}
+	</script>
+</head>
+<body>
+    <div class="container d-flex align-items-center justify-content-center vh-100"style="background-color:white;">
+        <div class="row g-0 w-100" >
+            <div class="col-md-6 d-none d-md-block" style="background-color:white;">
+                <img src="../l.jpg" alt="SignUpImage" class="img-fluid h-100">
+            </div>
+            <div class="col-md-6 bg-light p-5"  >
+                <h1>SIGN UP</h1>
+                <h3 style="font-weight:400;font-size:26px"><em>Make your own account</em></h3>
+                <h6 id="val_msg" style="padding-top:5px;font-size:20px;text-align:center;color:darkred;"></h6>
+                <form id="register" name="register" action="connect.jsp" method="post" onsubmit="f_check_password(event)" >
+                    <div class="mb-3">
+                        <label for="user_name" class="form-label"><i class="fas fa-users"></i></label>
+                        <input type="text" id="user_name" class="form-control"  name="user_name" placeholder="Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="user_email" class="form-label"><i class="fas fa-envelope"></i></label>
+                        <input type="email" id="user_email" class="form-control" name="user_email" placeholder="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cell_number" class="form-label"><i class="fas fa-phone"></i></label>
+                        <input  type="text" id="cell_number" class="form-control" name="cell_number" placeholder="Mobile Number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="user_password" class="form-label"><i class="fas fa-unlock-alt"></i></label>
+                        <input type="password" id="user_password" class="form-control" name="user_password" placeholder="Set a Password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="user_confirm_password" class="form-label"><i class="fas fa-check"></i></label>
+                        <input type="password" id="user_confirm_password" class="form-control" name="user_confirm_password" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark w-100">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
